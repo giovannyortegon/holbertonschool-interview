@@ -10,7 +10,7 @@ def minOperations(n):
         ops: (int)number of operations.
     """
     ops = 0
-    if n == 0:
+    if n == 0 or type(n) is not int:
         return 0
     else:
         for i in range(2, n + 1):
