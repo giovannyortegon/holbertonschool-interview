@@ -11,12 +11,14 @@ def main():
 
     def log_parsing(response):
         """ parsing function """
-        status = response.split()
-        code = status[7]
-        size[0] += int(status[8])
-        if code in status_code:
-            status_code[code] += 1
-
+        try:
+            status = response.split()
+            code = status[7]
+            size[0] += int(status[8])
+            if code in status_code:
+                status_code[code] += 1
+        except Exception:
+            pass
 
     def print_all():
         """ Print Dictionary """
