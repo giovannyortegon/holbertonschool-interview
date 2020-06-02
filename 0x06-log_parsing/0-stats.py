@@ -16,13 +16,12 @@ def main():
         size[0] += int(status[8])
         if code in status_code:
             status_code[code] += 1
-        else:
-            pass
+
 
     def print_all():
         """ Print Dictionary """
         print("File size: {}".format(size[0]))
-        for key, value in status_code.items():
+        for key, value in sorted(status_code.items()):
             if value != 0:
                 print("{}: {}".format(key, value))
 
@@ -36,6 +35,7 @@ def main():
             count += 1
     except KeyboardInterrupt:
         print_all()
+        raise
 
 
 if __name__ == "__main__":
