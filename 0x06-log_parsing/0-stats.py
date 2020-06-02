@@ -3,8 +3,7 @@
 import sys
 
 
-def main():
-    """ Main Function """
+if __name__ == "__main__":
     size = [0]
     status_code = {'200': 0, '301': 0, '400': 0, '401': 0,
                    '403': 0, '404': 0, '405': 0, '500': 0}
@@ -37,8 +36,3 @@ def main():
             count += 1
     except KeyboardInterrupt:
         print_all()
-        raise
-
-
-if __name__ == "__main__":
-    main()
