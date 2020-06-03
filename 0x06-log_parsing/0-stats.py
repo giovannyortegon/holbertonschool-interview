@@ -5,14 +5,14 @@ import sys
 
 if __name__ == "__main__":
     size = [0]
-    status_code = {'200': 0, '301': 0, '400': 0, '401': 0,
-                   '403': 0, '404': 0, '405': 0, '500': 0}
+    status_code = {200: 0, 301: 0, 400: 0, 401: 0,
+                   403: 0, 404: 0, 405: 0, 500: 0}
 
     def log_parsing(response):
         """ parsing function """
         try:
             status = response.split()
-            code = status[7]
+            code = int(status[7])
             size[0] += int(status[8])
             if code in status_code:
                 status_code[code] += 1
@@ -36,3 +36,6 @@ if __name__ == "__main__":
             count += 1
     except KeyboardInterrupt:
         print_all()
+        raise
+
+    print_all()
