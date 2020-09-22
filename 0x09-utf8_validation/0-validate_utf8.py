@@ -2,22 +2,6 @@
 """ valid UTF-8 encoding """
 
 
-def Valid(num):
-    """ Valid - Verify the two most relevant bits
-
-    num:    numto valid
-
-    Return:
-        False or True
-    """
-    mask = 1 << 7
-    mask1 = 1 << 8
-    if num & mask or num & mask1:
-        return False
-    else:
-        return True
-
-
 def validUTF8(data):
     """ validUTF8 - Valid elements of array
 
@@ -28,9 +12,13 @@ def validUTF8(data):
     """
     data_len = len(data)
     valid_len = 0
-    for n in data:
-        num = Valid(n)
-        if num:
+    mask = 1 << 7
+    mask1 = 1 << 8
+
+    for num in data:
+        if num & mask or num & mask1:
+            continue
+        else:
             valid_len += 1
 
     if valid_len == data_len:
