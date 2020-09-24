@@ -10,18 +10,25 @@ def validUTF8(data):
     Return:
         False or True
     """
-    data_len = len(data)
     valid_len = 0
-    mask = 1 << 7
-    mask1 = 1 << 8
+    mask1 = 1 << 7
+    mask2 = 1 << 6
 
     for num in data:
-        if num & mask or num & mask1:
-            continue
-        else:
-            valid_len += 1
+        mask = 1 << 7
+        if valid_len == 0:
+            while mask & num:
+                valid_len += 1
+                mask = mask >> 1
 
-    if valid_len == data_len:
-        return True
-    else:
-        return False
+            if valid_len == 0:
+                continue
+
+            if valid_len == 1 or valid_len > 4:
+                return False
+        else:
+            if not (num & mask1 and not (num & mask2)):
+                return False
+        valid_len -= 1
+
+    return valid_len == 0
