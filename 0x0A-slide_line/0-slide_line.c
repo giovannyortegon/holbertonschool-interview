@@ -12,9 +12,9 @@ int slide_line(int *line, size_t size, int direction)
 		return (0);
 
 	if (direction == 0)
-		slice_left(line, size);
+		slide_left(line, size);
 	else
-		slice_right(line, size);
+		slide_right(line, size);
 
 	return (1);
 }
